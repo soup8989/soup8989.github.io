@@ -1,9 +1,46 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>szoup</title>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+		<link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
-</body>
+    <!-- Your CSS (if using a separate file) -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body class="font-sans text-gray-900 bg-white leading-relaxed">
+
+		<header></header>
+
+		<main>
+			<!-- Landing Page Section-->
+			<div class="flex flex-col items-center justify-center h-screen">
+				<!-- Clock and Time -->
+				<div class="flex flex-col bg-black opacity-50 rounded-2xl p-10 items-center m-10 ">
+					<div id="clock" class="text-4xl font-medium text-white self-center">00:00</div>
+					<div id="date" class="font-medium text-white">Day Date</div>
+				</div>
+
+
+				<!-- Button to go down -->
+				<button id='enter-btn' class="bg-black opacity-50 text-white p-2 rounded-md cursor-pointer">drop down</button>
+			</div>
+
+			<!-- Content section-->
+			 <div id="content" class="overflow-hidden max-h-0 transition-all duration-700 ease-in-out">
+				<p class="bg-black text-white">Hello!</p>
+			 </div>
+		</main>
+
+		<footer>
+			<!-- footer content -->
+		</footer>
+
+		<!-- Your JS (at the bottom so HTML loads first) -->
+		<script src="main.js"></script>
+	</body>
 </html>
