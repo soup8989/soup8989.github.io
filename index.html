@@ -5,56 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>szoup</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
-  <body class="font-sans text-gray-900 bg-white leading-relaxed">
-
-		<header></header>
-
-		<main>
-			<!-- Landing Page Section-->
-			<div id="landing" class="flex flex-col items-center justify-center h-screen">
-				<!-- Clock and Time -->
-				<div class="flex flex-col bg-black opacity-50 rounded-2xl p-10 items-center m-10 ">
-					<div id="clock" class="text-4xl font-medium text-white self-center">00:00</div>
-					<div id="date" class="font-medium text-white">Day Date</div>
-				</div>
-
-
-				<!-- Button to go down -->
-				<button id='enter-btn' class="bg-black opacity-50 text-white p-2 rounded-md cursor-pointer">drop down</button>
-			</div>
-
-			<!-- Bar Scene Section-->
-			 <div id="bar-scene" class="hidden">
-				<div class="inline-flex flex-row w-[100%] gap-[32px] py-[32px] m-10 justify-center">
-					<!-- Buttons -->
-					<button class="modalBtn h-[150px] w-[50px] border-2 hover:bg-gray-400 cursor-pointer">projects</button>
-					<button class="modalBtn h-[150px] w-[50px] border-2 hover:bg-gray-300 cursor-pointer">resume</button>
-					<button class="modalBtn h-[150px] w-[50px] border-2 hover:bg-gray-300 cursor-pointer">about</button>
-				</div>
-				<button id="exit-btn" class="bg-black opacity-50 text-white p-2 rounded-md cursor-pointer">Go back up</button>
-			 </div>
-
-
-			<!-- The Modal -->
-			<div id="myModal" class="modal">
-				<div class="modal-content">
-					<span class="close">&times;</span>
-					<p>Modal text</p>
-				</div>
-			</div>
-		</main>
-
-		<footer>
-			<!-- footer content -->
-		</footer>
-
-		<!-- Your JS-->
-		<script src="assets/scripts/main.js"></script>
-		<script src="assets/scripts/bar.js"></script>
-	</body>
+  <body >
+	<canvas class="webgl"></canvas>
+	<script type="module" src="assets/scripts/script.js"></script>
+  </body>
 </html>
