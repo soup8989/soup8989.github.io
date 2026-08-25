@@ -1,6 +1,7 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-console.log("Javascript is working")
+
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -9,23 +10,46 @@ console.log(canvas)
 // Scene
 const scene = new THREE.Scene()
 
-// Object
+/**
+ * Objects
+ */
+
+const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(20, 20),
+    new THREE.MeshStandardMaterial()
+)
+floor.rotation.x = -Math.PI * 0.5
+scene.add(floor)
 
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const material = new THREE.MeshStandardMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
 // Sizes
 const sizes = {
-    width: 800,
-    height: 600
+    width: window.innerWidth,
+    height: window.innerHeight
 }
 
 // Camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
-camera.position.z = 3
+// const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+const aspectRatio = sizes.width/sizes.height
+const camera = new THREE.PerspectiveCamera(90, aspectRatio, 0.1, 100)
+camera.position.set(3, 3, 3)
+camera.lookAt(mesh.position)
+
 scene.add(camera)
+
+/**
+ * Lights
+ */
+
+const ambientLight = new THREE.AmbientLight('0xffffff', 1)
+const directionalLight = new THREE.DirectionalLight('0xffffff', 0.3)
+scene.add(ambientLight, directionalLight)
+
+
 
 // Render
 const renderer = new THREE.WebGLRenderer({
@@ -34,19 +58,22 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setSize(sizes.width, sizes.height)
 
-let time = Date.now()
+/**
+ * Controls
+ */
+const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
+
+
+const timer = new THREE.Timer()
 
 const tick = () => {
 
-    const currentTime = Date.now()
-    const deltaTime = currentTime - time
-    time = currentTime
+    timer.update()
+    controls.update()
 
-    console.log(currentTime)
+    mesh.rotation.y += 0.5 * timer.getDelta()
 
-    mesh.rotation.y += 0.01 * deltaTime
-    mesh.rotation.x += 0.01 * deltaTime
-    // mesh.rotation.z += 0.01
     renderer.render(scene, camera)
 
     window.requestAnimationFrame(tick)
